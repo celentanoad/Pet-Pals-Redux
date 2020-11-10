@@ -25,15 +25,8 @@ export const loadUser = () => async dispatch => {
 
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-    const body = JSON.stringify({ name, email, password });
-    console.log(body)
     try {
-        const res = await axios.post('http://localhost:3001/api/users', body, config);
+        const res = await axios.post('/api/users', name, email, password);
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
