@@ -11,7 +11,7 @@ import setToken from '../services/tokenService';
 // Load User
 export const loadUser = () => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:3001/api/auth');
+        const res = await axios.get('api/auth');
         dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -26,7 +26,7 @@ export const loadUser = () => async dispatch => {
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
     try {
-        const res = await axios.post('/api/users', name, email, password);
+        const res = await axios.post('/api/auth', name, email, password);
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
