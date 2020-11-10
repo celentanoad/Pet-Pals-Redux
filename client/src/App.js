@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grommet, Main } from 'grommet';
 import './App.css';
 import NavBar from './components/NavBar';
@@ -12,10 +12,19 @@ import LogInPage from './components/pages/LogInPage';
 //Combines react and redux
 import { Provider } from 'react-redux';
 import store from './store';
+import setToken from './services/tokenService';
+import { loadUser } from './actions/auth';
+
+if (localStorage.token) setToken(localStorage.token)
 
 function App() {
   const [user, setUser] = useState(null);
   const [darkMode, setDarkMode] = useState("dark");
+
+  useEffect(() => {
+    store.dispatch(loadUser());
+    console.log(localStorage.token)
+  }, []);
 
   const toggleDarkMode = () => {
     if (darkMode === "dark") setDarkMode("light");

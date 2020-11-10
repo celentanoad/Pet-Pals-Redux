@@ -2,8 +2,26 @@ import axios from 'axios';
 import { setMessage } from './message';
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+    REGISTER_FAIL,
+    USER_LOADED,
+    AUTH_ERROR
 } from './constants';
+import setToken from '../services/tokenService';
+
+// Load User
+export const loadUser = () => async dispatch => {
+    try {
+        const res = await axios.get('http://localhost:3001/api/auth');
+        dispatch({
+            type: USER_LOADED,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR
+        });
+    }
+}   
 
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
@@ -19,7 +37,8 @@ export const register = ({ name, email, password }) => async dispatch => {
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
-        })
+        });
+        dispatch(loadUser());
     } catch (err) {
         const errors = err.response.data.errors;
         if(errors) {

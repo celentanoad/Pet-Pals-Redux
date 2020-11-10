@@ -1,1 +1,1 @@
-## Pet Pals# Pet-Pals-Redux
+## Pet Pals Redux Edition
