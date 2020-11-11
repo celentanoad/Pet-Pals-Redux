@@ -6,7 +6,6 @@ import {
     USER_LOADED,
     AUTH_ERROR
 } from './constants';
-import setToken from '../services/tokenService';
 
 // Load User
 export const loadUser = () => async dispatch => {
