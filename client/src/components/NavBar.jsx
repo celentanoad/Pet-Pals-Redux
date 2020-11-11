@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const NavBar = ({user, toggleDarkMode, darkMode}) => {
     return ( 
         <>
-        <Header pad="small" background="background-contrast" border="true">
+        <Header pad="small" background="background-contrast" border={true}>
             {user ?
             <>
             <Box justify="start">
@@ -25,7 +25,7 @@ const NavBar = ({user, toggleDarkMode, darkMode}) => {
                 {size =>
                     size === 'small' ? (
                         <Box justify="end">
-                            <Button focusIndicator="false" onClick={toggleDarkMode}>{darkMode==="dark" ? <Brightness3Icon /> : <WbSunnyIcon />}</Button>
+                            <Button focusIndicator={false} onClick={toggleDarkMode}>{darkMode==="dark" ? <Brightness3Icon /> : <WbSunnyIcon />}</Button>
                             <Menu
                                 a11yTitle="Navigation Menu"
                                 dropProps={{ align: { top: 'bottom', right: 'right'}}}
@@ -73,20 +73,20 @@ const NavBar = ({user, toggleDarkMode, darkMode}) => {
             :
             <>
             <Box>
-                <Box direction="row" responsive="true">
-                    <Button alignSelf="end" margin="xsmall" focusIndicator="false" size="xsmall" onClick={toggleDarkMode}>{darkMode==="dark" ? <Brightness3Icon /> : <WbSunnyIcon />}</Button>
+                <Box direction="row" responsive={true}>
+                    <Button alignSelf="end" margin="xsmall" focusIndicator={false} size="small" onClick={toggleDarkMode}>{darkMode==="dark" ? <Brightness3Icon /> : <WbSunnyIcon />}</Button>
                     <Clock 
                         type="digital"  
                         hourLimit={12}
                         size="small"
                     />
                 </Box>
-                <Nav direction="row" responsive="true">
+                <Nav direction="row" responsive={true}>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <Button className="home" margin="xsmall"><Home/></Button>
                     </Link>
                     <Link to="/profiles" style={{ textDecoration: 'none' }}>
-                        <Button alignSelf="end" margin="xsmall" size="xsmall" label="View Profiles"></Button>
+                        <Button alignSelf="end" margin="xsmall" size="small" label="View Profiles"></Button>
                     </Link>
                 </Nav>
             </Box>
